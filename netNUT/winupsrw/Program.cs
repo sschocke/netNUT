@@ -61,6 +61,10 @@ namespace ScorpioTech.netNUT.winupsrw
             {
                 Console.WriteLine("Error: " + sockex.Message);
             }
+            catch (UPSException upsex)
+            {
+                Console.WriteLine("Error: " + upsex.Description);
+            }
             finally
             {
                 client.Disconnect();
