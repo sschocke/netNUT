@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB23DCEF-8E4C-429D-902D-37BADFF619ED}</ProjectGuid>
+    <ProjectGuid>{261E4550-CCB6-4BAD-9538-65C2337FE36C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScorpioTech.netNUT.winupsc</RootNamespace>
-    <AssemblyName>winupsc</AssemblyName>
+    <RootNamespace>ScorpioTech.netNUT.winupsrw</RootNamespace>
+    <AssemblyName>winupsrw</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,9 +43,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\ScorpioTech.Framework\ScorpioTech.Framework.netNUTClient\ScorpioTech.Framework.netNUTClient.csproj">
