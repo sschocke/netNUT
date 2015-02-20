@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76D95A60-7710-4A26-9726-5D8E68167EB8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>winupsmon.server</RootNamespace>
+    <AssemblyName>winupsmon.server</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ScorpioTech.Framework\ScorpioTech.Framework.LogServer\ScorpioTech.Framework.LogServer.csproj">
+      <Project>{64a6115f-fc1f-4601-818d-3cafee4f549b}</Project>
+      <Name>ScorpioTech.Framework.LogServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ScorpioTech.Framework\ScorpioTech.Framework.netNUTClient\ScorpioTech.Framework.netNUTClient.csproj">
+      <Project>{c2da85e2-9a1a-4148-a092-1da7acedcc14}</Project>
+      <Name>ScorpioTech.Framework.netNUTClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ScorpioTech.Framework\ScorpioTech.Framework.PlugIn\ScorpioTech.Framework.PlugIn.csproj">
+      <Project>{f1c8ce35-864c-403c-8308-12b5146633bd}</Project>
+      <Name>ScorpioTech.Framework.PlugIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScorpioTech.netNUT.upsmon.Shared\ScorpioTech.netNUT.upsmon.Shared.csproj">
+      <Project>{2f0a70c2-c16c-46a9-853a-eed50602b4a2}</Project>
+      <Name>ScorpioTech.netNUT.upsmon.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\ScorpioTech.netNUT.upsmon.Shared\upsmon.xml">
+      <Link>upsmon.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
