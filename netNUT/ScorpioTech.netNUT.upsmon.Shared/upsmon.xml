@@ -15,7 +15,7 @@
       for this to make sense!
 
     -->
-    <minsupplies>2</minsupplies>
+    <minsupplies>1</minsupplies>
     
     <!--
       upsmon runs this command when the system needs to be brought down.
@@ -24,7 +24,11 @@
     -->
     <shutdowncmd>
       <program>shutdown</program>
-      <arguments>/p /f /d u:6:12 /c "upsmon shutdown due to critical UPS battery"</arguments>
+      <!--
+        Windows XP and below have a different syntax. If you are using this software on Windows XP or 2000, try this
+        <arguments>-s -f -d u:6:12 -c "upsmon shutdown due to critical UPS battery"</arguments>
+      -->
+      <arguments>/p /f /d u:6:12</arguments>
       <workdir>%SYSTEM%</workdir>
     </shutdowncmd>
     
@@ -278,7 +282,6 @@
       # <monitor host="su700@server.example.com" powervalue="1" username="upsmon" password="secretpass" mode="slave" />
       # <monitor host="myups@localhost" powervalue="1" username="upsmon" password="pass" mode="master" />
     -->
-    <monitor host="study_ups@server" username="admin" password="admin" mode="slave" />
-    <monitor host="dummy@server" username="admin" password="admin" mode="slave" />
+    <monitor host="dummy@server" username="dummy" password="dummy" mode="slave" />
   </ups>
 </upsmon>
