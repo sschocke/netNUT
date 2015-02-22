@@ -7,7 +7,7 @@
     <ProjectGuid>{76D95A60-7710-4A26-9726-5D8E68167EB8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>winupsmon.server</RootNamespace>
+    <RootNamespace>ScorpioTech.netNUT.winupsmon.server</RootNamespace>
     <AssemblyName>winupsmon.server</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

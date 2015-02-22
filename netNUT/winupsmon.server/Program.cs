@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace winupsmon.server
+namespace ScorpioTech.netNUT.winupsmon.server
 {
     class Program : ILogger
     {
