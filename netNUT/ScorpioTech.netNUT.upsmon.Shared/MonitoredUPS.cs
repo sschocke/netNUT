@@ -133,6 +133,9 @@ namespace ScorpioTech.netNUT.upsmon.Shared
                 this.Status &= ~UPSMonStatus.COMMBAD;
                 this.Status |= UPSMonStatus.COMMOK;
                 this.Device.Description = upsd.GetUPSDescription(this.Device.Name);
+                upsd.SetUsername(this.Username);
+                upsd.SetPassword(this.Password);
+                upsd.Login(this.Device.Name);
             }
             catch (SocketException sockex)
             {
@@ -146,7 +149,8 @@ namespace ScorpioTech.netNUT.upsmon.Shared
             }
             catch (UPSException upsex)
             {
-                UPSMonThreads.AppendLog("Error on UPS " + this.Device.ToString() + "! " + upsex.Message);
+                UPSMonThreads.AppendLog("Error on UPS " + this.Device.ToString() + "! " + upsex.Code.ToString() + ":" + upsex.Description
+                    + (String.IsNullOrEmpty(upsex.Message) ? "" : " (" + upsex.Message + ")"));
                 if (this.Status != UPSMonStatus.NOCOMMS)
                 {
                     this.Status &= ~UPSMonStatus.COMMOK;
@@ -158,6 +162,7 @@ namespace ScorpioTech.netNUT.upsmon.Shared
         {
             if (this.upsd != null)
             {
+                this.upsd.Logout();
                 this.upsd.Disconnect();
             }
         }
