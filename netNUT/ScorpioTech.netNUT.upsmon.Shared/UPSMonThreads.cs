@@ -32,6 +32,7 @@ namespace ScorpioTech.netNUT.upsmon.Shared
 
         private Thread thread;
         private volatile bool running = false;
+        private volatile bool shutdown = false;
         private ILogger log_facility;
 
         public static UPSMonThreads Instance { get; private set; }
@@ -167,6 +168,8 @@ namespace ScorpioTech.netNUT.upsmon.Shared
                 while (this.running)
                 {
                     Thread.Sleep(100);
+                    if (shutdown) continue;
+
                     PowerSupply.Update();
                     updatedCritical = PowerSupply.GoneCritical;
                     if (updatedCritical != critical)
@@ -200,6 +203,8 @@ namespace ScorpioTech.netNUT.upsmon.Shared
 
         private void ExecuteShutdown()
         {
+            shutdown = true;
+            PowerSupply.End();
 #if DEBUG
             this.log_facility.AppendLog("Would execute '" + Settings.ShutdownCommand.FileName + " " + Settings.ShutdownCommand.Arguments + "'");
 #else
