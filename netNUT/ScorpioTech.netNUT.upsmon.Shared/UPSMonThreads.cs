@@ -209,8 +209,24 @@ namespace ScorpioTech.netNUT.upsmon.Shared
             this.log_facility.AppendLog("Would execute '" + Settings.ShutdownCommand.FileName + " " + Settings.ShutdownCommand.Arguments + "'");
 #else
             this.log_facility.AppendLog("Executing '" + Settings.ShutdownCommand.FileName + " " + Settings.ShutdownCommand.Arguments + "'");
-            Process.Start(Settings.ShutdownCommand);
+            Process shutdownProcess = new Process();
+            shutdownProcess.StartInfo = Settings.ShutdownCommand;
+            shutdownProcess.OutputDataReceived += shutdownProcess_OutputDataReceived;
+            shutdownProcess.ErrorDataReceived += shutdownProcess_ErrorDataReceived;
+            shutdownProcess.Start();
+            shutdownProcess.WaitForExit();
+            this.log_facility.AppendLog("Shutdown result=" + shutdownProcess.ExitCode);
 #endif
+        }
+
+        void shutdownProcess_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            this.log_facility.ErrorLog("Shutdown Error: " + e.Data);
+        }
+
+        void shutdownProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            this.log_facility.AppendLog("Shutdown Output: " + e.Data);
         }
 
         void logServer_onServerException(Exception ex)
